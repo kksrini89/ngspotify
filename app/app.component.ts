@@ -1,7 +1,10 @@
+import { SpotifyService } from './services/spotify.service';
 import { Component } from '@angular/core';
 
 @Component({
+  moduleId: module.id,
   selector: 'my-app',
-  template: `<h1>Hello {{name}}</h1>`,
+  templateUrl: 'app.component.html',
+  providers: [SpotifyService]
 })
-export class AppComponent  { name = 'Angular'; }
+export class AppComponent { name = 'Angular'; }

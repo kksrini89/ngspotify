@@ -5,7 +5,25 @@
 <div style="margin-bottom:10px;"></div>
 <form>
     <div class="form-group">
-        <input type="text" class="form-control" placeholder="Search Artists..." 
-        [(ngModel)]="searchString" name="searchString" (keyup)="searchMusic()">
+        <input type="text" class="form-control" placeholder="Search Artists..." [(ngModel)]="searchString" name="searchString" (keyup)="searchMusic()">
     </div>
 </form>
+
+<div *ngIf="searchResults">
+    <div *ngFor="let item of searchResults">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="search-res well">
+                    <h1><a [routerLink]="['artist',item.id]">{{item.name}}</a></h1>
+                    <div>
+                        <strong>Genres:</strong>
+                        <span *ngFor="let genre of item.genres">
+                            {{genre}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

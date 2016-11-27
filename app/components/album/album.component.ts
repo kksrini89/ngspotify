@@ -7,22 +7,19 @@ import { SpotifyService } from './../../services/spotify.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'artist',
-    templateUrl: 'artist.component.html',
-    styleUrls: ['artist.styles.css']
+    selector: 'album',
+    templateUrl: 'album.component.html'
+    // styleUrls: ['artist.styles.css']
 })
-export class ArtistComponent implements OnInit {
+export class AlbumComponent implements OnInit {
     id: string;
-    albums: Album[];
-    artists: Artist[];
+    album: Album[];
     constructor(private spotifyService: SpotifyService, private _route: ActivatedRoute) { }
     ngOnInit() {
         this._route.params.map(data => data['id'])
-            .subscribe(id => {
-                this.spotifyService.getArtist(id)
-                    .subscribe(result => this.artists = result);
-                this.spotifyService.getAlbums(id)
-                    .subscribe(albums => this.albums = albums.items);
+            .subscribe(id => {                
+                this.spotifyService.getAlbum(id)
+                    .subscribe(albums => this.album = albums);
             });
     }
 }

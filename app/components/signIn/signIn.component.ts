@@ -19,6 +19,6 @@ export class SignInComponent {
     private router: Router) { }
   onSignIn(form: NgForm) {
     this.firebaseAuthService.signIn(this.userDetails);
-    this.router.navigate(['']);
+    this.router.navigate(['/search']);
   }
 }

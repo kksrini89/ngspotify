@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
 import { User } from './../../model/user';
@@ -14,8 +15,9 @@ export class SignUpComponent {
         email: '',
         password: ''
     };
-    constructor(private firebaseAuthService: FirebaseAuthService) { }
+    constructor(private firebaseAuthService: FirebaseAuthService, private router: Router) { }
     onSignUp(form: NgForm) {
         this.firebaseAuthService.signUp(this.userDetails);
+        this.router.navigate(['/search']);
     }
 }

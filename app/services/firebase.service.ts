@@ -4,21 +4,16 @@ import { Injectable } from '@angular/core';
 declare var firebase;
 
 @Injectable()
-export class FirebaseService {
+export class FirebaseAuthService {
+    constructor() { }
     signIn(user: User) {
         firebase.auth().signInWithEmailAndPassword(user.email, user.password).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
+            console.log(error);
         });
     }
     signUp(user: User) {
         firebase.auth().createUserWithEmailAndPassword(user.email, user.password).catch(function (error) {
-            // Handle Errors here.
-            var errorCode = error.code;
-            var errorMessage = error.message;
-            // ...
+            console.log(error);
         });
     }
     currentlyLoggedInUser() {
@@ -26,7 +21,7 @@ export class FirebaseService {
     }
 
     signOut() {
-        firebase.auth().signout();
+        firebase.auth().signOut();        
         /*firebase.auth().signOut().then(function () {
             // Sign-out successful.
         }, function (error) {

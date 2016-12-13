@@ -6,7 +6,7 @@ import { User } from './../../model/user';
 import { FirebaseAuthService } from './../../services/firebase.service';
 
 @Component({
-moduleId:'module.id',
+  moduleId: module.id,
   selector: 'signIn',
   templateUrl: 'signIn.component.html'
 })
@@ -19,6 +19,6 @@ export class SignInComponent {
     private router: Router) { }
   onSignIn(form: NgForm) {
     this.firebaseAuthService.signIn(this.userDetails);
-    this.router.navigate(['/search']);
+    this.router.navigate(['search']);
   }
 }

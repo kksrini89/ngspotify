@@ -6,7 +6,7 @@ import { User } from './../../model/user';
 import { FirebaseAuthService } from './../../services/firebase.service';
 
 @Component({
-moduleId:'module.id',
+    moduleId: module.id, //For relative path 
     selector: 'signUp',
     templateUrl: 'signUp.component.html'
 })

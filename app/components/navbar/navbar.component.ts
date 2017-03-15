@@ -1,16 +1,28 @@
+import { Router } from '@angular/router';
 import { FirebaseAuthService } from './../../services/firebase.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   moduleId: module.id,
   selector: 'navbar',
   templateUrl: './navbar.component.html',
-  styles: ['a{ cursor : pointer}']
+  styles: ['a{cursor:pointer;}']
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   name = 'Angular';
-  constructor(private firebaseService: FirebaseAuthService) { }
+  isAuthenticated: boolean;
+  constructor(private firebaseAuth: FirebaseAuthService, private router: Router) { }
+
+  ngOnInit() {
+    
+  }
+
+  isAuth(){
+    return this.firebaseAuth.isAuthenticated();
+  }
+  
   onLogOut() {
-    this.firebaseService.signOut();
+    this.firebaseAuth.signOut();
+    this.router.navigate(['']);
   }
 }
